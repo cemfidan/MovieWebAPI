@@ -9,7 +9,8 @@ namespace MovieWebAPI.Database
         {
             using (var context = new DatabaseContext())
             {
-                context.Movies.Add(movie);
+                var result = context.Entry(movie);
+                result.State = EntityState.Added;
                 context.SaveChanges();
             }
         }
@@ -26,7 +27,8 @@ namespace MovieWebAPI.Database
         {
             using (var context = new DatabaseContext())
             {
-                context.Entry(movie).State = EntityState.Modified;
+                var result = context.Entry(movie);
+                result.State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
