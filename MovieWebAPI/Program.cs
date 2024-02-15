@@ -5,7 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IMovieDal, MovieDal>();
+//when we add the service, we are telling the application to use the MovieDal class when it needs to use the IMovieDal interface
+//builder.Services.AddSingleton<IMovieDal, MovieDal>();
+builder.Services.AddScoped<MovieWebAPI.Database.MovieDal>();
+builder.Services.AddScoped<MovieWebAPI.Database.ActorDal>();
+builder.Services.AddScoped<MovieWebAPI.Database.DirectorDal>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

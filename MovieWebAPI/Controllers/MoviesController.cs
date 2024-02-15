@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieWebAPI.Database;
-using MovieWebAPI.Entities;
 
 namespace MovieWebAPI.Controllers
 {
@@ -9,9 +8,9 @@ namespace MovieWebAPI.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private IMovieDal _movieDal;
+        private MovieDal _movieDal;
 
-        public MoviesController(IMovieDal movieDal)
+        public MoviesController(MovieDal movieDal)
         {
             _movieDal = movieDal;
         }
@@ -26,7 +25,7 @@ namespace MovieWebAPI.Controllers
         [Route("{id}")]
         public IActionResult GetMovie(int id)
         {
-            if(id.Equals(0))
+            if (id.Equals(0))
             {
                 return BadRequest("Id cannot be 0");
             } //and other validations

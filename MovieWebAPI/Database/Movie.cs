@@ -1,4 +1,4 @@
-﻿namespace MovieWebAPI.Entities
+﻿namespace MovieWebAPI.Database
 {
     public class Movie
     {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MovieWebAPI.Entities;
 
 namespace MovieWebAPI.Database
 {

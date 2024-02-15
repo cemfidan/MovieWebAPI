@@ -2,13 +2,13 @@
 
 namespace MovieWebAPI.Database
 {
-    public class MovieDal
+    public class DirectorDal
     {
-        public void Add(Movie movie)
+        public void Add(Director director)
         {
             using (var context = new DatabaseContext())
             {
-                var result = context.Entry(movie);
+                var result = context.Entry(director);
                 result.State = EntityState.Added;
                 context.SaveChanges();
             }
@@ -17,30 +17,30 @@ namespace MovieWebAPI.Database
         {
             using (var context = new DatabaseContext())
             {
-                var movie = context.Movies.Find(id);
-                context.Movies.Remove(movie);
+                var director = context.Directors.Find(id);
+                context.Directors.Remove(director);
                 context.SaveChanges();
             }
         }
-        public void Update(Movie movie)
+        public void Update(Director director)
         {
             using (var context = new DatabaseContext())
             {
-                var result = context.Entry(movie);
+                var result = context.Entry(director);
                 result.State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
-        public List<Movie> GetAll()
+        public List<Director> GetAll()
         {
             using var value = new DatabaseContext();
-            return value.Set<Movie>().ToList();
+            return value.Set<Director>().ToList();
         }
-        public Movie GetById(int id)
+        public Director GetById(int id)
         {
             using (var context = new DatabaseContext())
             {
-                return context.Movies.Find(id);
+                return context.Directors.Find(id);
             }
         }
     }
