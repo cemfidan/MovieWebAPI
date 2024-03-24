@@ -15,14 +15,13 @@ namespace MovieWebAPI.Controllers
             _movieDal = movieDal;
         }
 
-        [HttpGet]
+        [HttpGet("getmovies")]
         public IActionResult GetMovies()
         {
             var result = _movieDal.GetAll().ToList();
             return Ok(result);
         }
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("getmovie/{id}")]
         public IActionResult GetMovie(int id)
         {
             if (id.Equals(0))
@@ -32,23 +31,23 @@ namespace MovieWebAPI.Controllers
             var result = _movieDal.GetById(id);
             return Ok(result);
         }
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult AddMovie(Movie movie)
         {
             _movieDal.Add(movie);
-            return Ok("Movie added");
+            return Ok();
         }
-        [HttpPut]
+        [HttpPut("update")]
         public IActionResult UpdateMovie(Movie movie)
         {
             _movieDal.Update(movie);
-            return Ok("Movie updated");
+            return Ok();
         }
-        [HttpDelete]
+        [HttpDelete("delete/{id}")]
         public IActionResult DeleteMovie(int id)
         {
             _movieDal.Delete(id);
-            return Ok("Movie deleted");
+            return Ok();
         }
     }
 }
